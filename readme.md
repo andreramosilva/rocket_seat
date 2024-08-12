@@ -1,0 +1,1 @@
+#repositorio com anotaçoes do curso de python
