@@ -54,8 +54,8 @@ while opcao not in ["end","exit","stop","finish"]:
    if opcao == "salvar" or opcao == "1":
       contato["nome"] = input("Digite o nome do seu contato: ")
       contato["telefone"] = input("Digite o telefone do seu contato: ")
-      contato["email"] = input("Digite o email do seu contato")
-      contato["favorito"] = True if input("deseja adicionar contato aos seus favoritos? y/n") == "y" else False
+      contato["email"] = input("Digite o email do seu contato: ")
+      contato["favorito"] = True if input("deseja adicionar contato aos seus favoritos? y/n: ") == "y" else False
       
       salvar(contato)
    elif opcao == "editar" or opcao == "2":
