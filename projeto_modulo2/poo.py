@@ -4,6 +4,7 @@ class Pessoa:
         self.nome = nome
         self.idade = idade
 
-
+    def saudacao(self):
+        return f"Olá Meu nome é {self.nome} e tenho {self.idade}"
 
 pessoa1 = Pessoa("Alice",30)
