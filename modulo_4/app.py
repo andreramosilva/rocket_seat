@@ -32,6 +32,67 @@ def login():
     
     return jsonify({'message': 'User not authenticated'}), 401
 
+@app.route('/logout', methods=['GET'])
+@login_required
+def logout():
+    logout_user()
+    return jsonify({'message': 'User logged out'})
+
+@app.route('/user', methods=['POST'])
+@login_required
+def create_user():
+    data = request.json
+    username = data.get('username')
+    senha = data.get('senha')
+
+    if username and senha:
+        user = User(username=username, senha=senha)
+        db.session.add(user)
+        db.session.commit()
+        return jsonify({'message': 'User created'})
+
+    return jsonify({'message': 'User not created'}), 400
+
+@app.route('/user/<int:id>', methods=['GET'])
+@login_required
+def get_user(id):
+    user = User.query.get(id)
+
+    if user:
+        return jsonify({'id': user.id, 'username': user.username, 'senha': user.senha})
+
+    return jsonify({'message': 'User not found'}), 404
+
+@app.route('/user/<int:id>', methods=['PUT'])
+@login_required
+def update_user(id):
+    user = User.query.get(id)
+
+    if user and id == current_user.id:
+        data = request.json
+        user.username = data.get('username', user.username)
+        user.senha = data.get('senha', user.senha)
+        db.session.commit()
+        return jsonify({'message': 'User updated'})
+
+    return jsonify({'message': 'User not found'}), 404
+
+@app.route('/user/<int:id>', methods=['DELETE'])
+@login_required
+def delete_user(id):
+    user= User.query.get(id)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+        return jsonify({'message': 'User deleted'})
+    return jsonify({'message': 'User not found'}), 404
+
+
+
+
+
+
+
 @app.route('/hello', methods=['GET'])
 def hello():
     return jsonify({'message': 'Hello, World!'})
