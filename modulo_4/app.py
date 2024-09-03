@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from models.user import User
 from database import db
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+import bycrypt
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "mysecretkey"
@@ -28,7 +29,7 @@ def login():
     if username and senha:
         user = User.query.filter_by(username=username).first()
 
-        if user is not None and user.senha == senha:
+        if user is not None and bycrypt.checkpw(str.encode(senha), str.encode(user.senha)):
             login_user(user)
             print(current_user.is_authenticated)
             return jsonify({'message': 'User authenticated'})
@@ -49,9 +50,9 @@ def create_user():
     data = request.json
     username = data.get('username')
     senha = data.get('senha')
-
+    hashed_pass = bycrypt.hashpw(str.encode(senha), bycrypt.gensalt())
     if username and senha:
-        user = User(username=username, senha=senha, role='user')
+        user = User(username=username, senha=hashed_pass, role='user')
         db.session.add(user)
         db.session.commit()
         return jsonify({'message': 'User created'})
