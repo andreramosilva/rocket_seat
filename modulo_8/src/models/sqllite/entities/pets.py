@@ -1,7 +1,7 @@
-from src.models.sqllite.settings.base import Base
-from sqlalchemy import Column, Integer, String , BIGINT
+from src.models.sqllite.settings.base import base
+from sqlalchemy import Column, String , BIGINT
 
-class Pets(Base):
+class Pets(base):
     __tablename__ = 'pets'
 
     id = Column(BIGINT, primary_key=True)
