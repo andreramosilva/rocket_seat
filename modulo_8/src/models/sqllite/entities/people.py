@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String , BIGINT, ForeignKey
-from src.models.sqllite.settings.base import Base
+from src.models.sqllite.settings.base import base
 
-class People(Base):
+class People(base):
     __tablename__ = 'people'
 
     id = Column(BIGINT, primary_key=True)

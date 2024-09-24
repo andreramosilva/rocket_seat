@@ -19,9 +19,14 @@ class PetsRepository:
     def delete_pet(self, pet_name: int) -> None:
         with self.__db_connection as database:
             try:
-                pet = database.session.query(Pets).filter(Pets.name == pet_name).one()
-                database.session.delete(pet)
+                (database.session.query(Pets)
+                    .filter(Pets.name == pet_name)
+                    .delete()
+                )
                 database.session.commit()
+                # pet = database.session.query(Pets).filter(Pets.name == pet_name).one()
+                # database.session.delete(pet)
+                # database.session.commit()
             except Exception as e:
                 print(e)
                 database.session.rollback()
