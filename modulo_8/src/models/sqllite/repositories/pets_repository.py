@@ -1,9 +1,10 @@
 from typing import List
 from sqlalchemy.orm.exc import NoResultFound
 from src.models.sqllite.entities.pets import Pets
+from src.models.sqllite.interfaces.pets_repository import PetsRepositoryInterface
 
 
-class PetsRepository:
+class PetsRepository(PetsRepositoryInterface):
     def __init__(self, db_connection) -> None:
         self.__db_connection = db_connection
 

@@ -1,9 +1,10 @@
 from sqlalchemy.orm.exc import NoResultFound
 from src.models.sqllite.entities.people import People
 from src.models.sqllite.entities.pets import Pets
+from src.models.sqllite.interfaces.people_repository import PeopleRepositoryInterface
 
 
-class PeopleRepository:
+class PeopleRepository(PeopleRepositoryInterface):
     def __init__(self, db_connection) -> None:
         self.__db_connection = db_connection
     def insert_person(self, first_name: str, last_name: str, age: int, pet_id: int) -> None:
