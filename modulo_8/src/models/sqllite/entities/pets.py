@@ -1,5 +1,5 @@
-from src.models.sqllite.settings.base import base
 from sqlalchemy import Column, String , BIGINT
+from src.models.sqllite.settings.base import base
 
 class Pets(base):
     __tablename__ = 'pets'
@@ -10,3 +10,4 @@ class Pets(base):
 
     def __repr__(self):
         return f'Pets(id={self.id}, name={self.name}, type={self.type})'
+    

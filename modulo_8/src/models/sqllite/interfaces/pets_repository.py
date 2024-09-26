@@ -6,7 +6,7 @@ class PetsRepositoryInterface(ABC):
     @abstractmethod
     def delete_pet(self, pet_name: str) -> None:
         pass
-    
+
     @abstractmethod
     def list_pets(self) -> List[Pets]:
         pass
