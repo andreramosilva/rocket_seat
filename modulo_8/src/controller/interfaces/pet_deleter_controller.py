@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-class PetDeleterController(ABC):
+class PetDeleterControllerInterface(ABC):
     @abstractmethod
-    def delete_pet(self, pet_id: int):
+    def delete_pet(self, name: int):
         pass
     

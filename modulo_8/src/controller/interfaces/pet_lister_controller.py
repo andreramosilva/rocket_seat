@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class PetListerController(ABC):
+class PetListerControllerInterface(ABC):
     @abstractmethod
     def list(self):
         pass

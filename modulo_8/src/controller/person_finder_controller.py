@@ -1,8 +1,9 @@
 from typing import Dict, List
 from src.models.sqllite.interfaces.people_repository import PeopleRepositoryInterface
 from src.models.sqllite.entities.people import People
+from .interfaces.person_finder_controller import PersonFinderControllerInterface
 
-class PersonFinderController:
+class PersonFinderController(PersonFinderControllerInterface):
     def __init__(self, person_finder : PeopleRepositoryInterface) -> None:
         self.person_finder = person_finder
 

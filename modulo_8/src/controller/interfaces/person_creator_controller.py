@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class PersonCreatorController(ABC):
+class PersonCreatorControllerInterface(ABC):
     @abstractmethod
-    def create_person(self, person: dict):
+    def create_person(self, person_info: dict):
         pass
