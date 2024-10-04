@@ -1,4 +1,5 @@
 from src.repository.pessoa_fisica_repository import PessoaFisicaRepository
+from src.models.sqllite.entities.pessoa_fisica import PessoaFisica
 
 class PessoaFisicaListerController:
     def __init__(self, pessoa_fisica_repository :  PessoaFisicaRepository):
@@ -8,14 +9,10 @@ class PessoaFisicaListerController:
 
         return self.pessoa_fisica_repository.list()
 
-    def __format_response(self, pessoa_fisica):
+    def __format_response(self, List[PessoaFisica]) -> dict:
         return {
-            'id': pessoa_fisica.id,
-            'renda_mensal': pessoa_fisica.renda_mensal,
-            'idade': pessoa_fisica.idade,
-            'nome_completo': pessoa_fisica.nome_completo,
-            'celular': pessoa_fisica.celular,
-            'email': pessoa_fisica.email,
-            'categoria': pessoa_fisica.categoria,
-            'saldo': pessoa_fisica.saldo
+            "data": { 
+                "type": "pessoa_fisica",
+
+            }
         }

@@ -13,6 +13,7 @@ def create_person():
     http_response = view.handle(http_request)
     return jsonify(http_response.body), http_response.status
 
+# TODO: 404 Not Found arrumar rota
 @person_route_bp.route('/people', methods=['GET'])
 def find_person():
     http_request = HttpRequest()

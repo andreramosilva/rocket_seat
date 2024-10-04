@@ -12,7 +12,7 @@ def list_pets():
     http_response = view.handle(http_request)
 
     return jsonify(http_response.body), http_response.status
-
+# TODO: 404 Not Found arrumar rota
 @pet_route_bp.route('/pets/<name>', methods=['DELETE'])
 def delete_pet(name):
     http_request = HttpRequest( param = {"name":name})
