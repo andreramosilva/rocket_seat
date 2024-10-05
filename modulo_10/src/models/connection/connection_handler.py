@@ -9,3 +9,5 @@ class ConnectionHandler:
 
     def get_db(self, db_name):
         return self.client[db_name]
+    
+db_connection = ConnectionHandler("localhost", 27017)
